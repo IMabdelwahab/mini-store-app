@@ -8,6 +8,8 @@ export default function ProductList(){
         getPoducts()
         getCategories()
     },[])
+
+    
     
     const [productList, setPoductList] = useState([])
     const [categories, setCategories] = useState([])
@@ -52,7 +54,7 @@ export default function ProductList(){
     }
 
     const displayCategories = () =>{
-        return categories.map((categorie,key)=>{ return <button key={key} onClick={()=>categorieChange(categorie)} id="btn-cat" className="my-5 p-3 text-white rounded bg-gray-400 hover:bg-gray-600">{categorie}</button> })
+        return categories.map((categorie,key)=>{ return <button key={key} onClick={()=>setCategory(categorie)} id="btn-cat" className="my-5 p-3 text-white rounded bg-gray-400 hover:bg-gray-600">{categorie}</button> })
     }
 
     const hundleSearch = (e) =>{
@@ -60,9 +62,9 @@ export default function ProductList(){
         // setSearchValue(document.querySelector("#searchField").value)     
     }
 
-    const categorieChange = (categoryT) =>{
-        setCategory(categoryT)
-    }
+    // const categorieChange = (categoryT) =>{
+    //     setCategory(categoryT)
+    // }
 
     return (
         <div className="mx-auto w-10/12">
@@ -73,8 +75,9 @@ export default function ProductList(){
                 <button type="submit" onClick={hundleSearch} className="mx-5 bg-sky-500 px-5 py-1 text-red-50 rounded-md hover:bg-sky-800">Search</button>
             </div>
         </form>
-        <div className="grid grid-cols-4 gap-1">
+        <div className="grid grid-cols-5 gap-1">
             {displayCategories()}
+            <button onClick={()=>setCategory("")} id="btn-cat" className="my-5 p-3 text-white rounded bg-gray-400 hover:bg-gray-600">Reset</button>
         </div>
         <h1 className="text-3xl my-10">Product List</h1>
         <div className="grid grid-cols-12 gap-20 my-10">

@@ -8,12 +8,16 @@ export default function Counter(){
                 return prev+1
             })
         },1000)
+        return (()=>clearInterval(interval))
     },[])
+
+    // const clearCounter = ()=> clearInterval(interval)
 
     return (
         <>
         <button onClick={()=>{ setCount(prev=>{ return prev+1 })} } className="border-2 p-2 border-solid border-green-700 ">increment</button>
         <button onClick={()=> setCount(0) } className="border-2 p-2 border-solid border-green-700 ">reset</button>
+        {/* <button onClick={()=> clearCounter() } className="border-2 p-2 border-solid border-green-700 ">stop</button> */}
         <p>counter : {count} seconds</p>
         </>
     )
